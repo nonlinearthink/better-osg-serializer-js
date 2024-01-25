@@ -1,9 +1,11 @@
 {
-  "name": "osg-serializer-js",
-  "version": "0.0.1",
+  "name": "better-osg-serializer-js",
+  "version": "0.0.3",
   "description": "Module for reading and writing OpenSceneGraph 3D models. file type supported: .osgb .osgt",
-  "main": "Source/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "scripts": {
+    "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,11 +15,20 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/eran-pinhas/osg-serializer-js.git"
+    "url": "https://github.com/nonlinearthink/osg-serializer-js.git"
   },
-  "author": "Eran Pinhas",
+  "author": "Eran Pinhas,Jaycee Chow",
   "license": "ISC",
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=7"
+  },
   "dependencies": {
     "bluebird": "^3.5.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rollup": "^4.9.6"
   }
 }
