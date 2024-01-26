@@ -46,19 +46,19 @@ class InputStream {
             this.advanceToCurrentEndBracket();
         }
         return obj;
-    };
+    }
 
     readObjectOfType(/*type*/) {
         return this.readObject();
-    };
+    }
 
     readBeginBracket() {
         this.inputOperator.readObjectMark(this.BEGIN_BRACKET)
-    };
+    }
 
     readEndBracket() {
         this.inputOperator.readObjectMark(this.END_BRACKET)
-    };
+    }
 
     readMatrix(type){
         let reader = this.getTypeReader(type);
@@ -317,7 +317,7 @@ class InputStream {
 
     advanceToCurrentEndBracket() {
         this.inputOperator.advanceToCurrentEndBracket();
-    };
+    }
 
     isBinary() {
         return this.inputOperator.isBinary();
@@ -409,6 +409,7 @@ class InputStream {
                 this.readProperty("Packing");
                 let packing = this.inputOperator.readInt();
                 this.readProperty("AllocationMode");
+                let mode = this.inputOperator.readInt();
                 this.readProperty("Data");
                 let levelSize = this.inputOperator.readUInt()-1;
                 this.readBeginBracket();
@@ -425,7 +426,7 @@ class InputStream {
 
                 image = new Image();
                 image.setProperty("Origin", origin);
-                image.setImage(s, t, r, internalFormat, pixelFormat, dataType, data,mode, packing);
+                image.setImage(s, t, r, internalFormat, pixelFormat, dataType, encodedData, mode, packing);
 
                 if ( levelSize>0 )
                     image.setProperty("Levels", levels );

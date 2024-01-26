@@ -6,6 +6,7 @@
   "module": "dist/esm/index.js",
   "scripts": {
     "build": "rollup -c",
+    "lint-fix": "eslint --ext .js --fix Source",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "eslint": "^8.56.0",
     "rollup": "^4.9.6"
   }
 }

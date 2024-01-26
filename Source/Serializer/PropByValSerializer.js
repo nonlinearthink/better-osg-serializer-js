@@ -1,5 +1,5 @@
 const assert = require('assert');
-let BaseSerializer = require('./BaseSerializer')
+const BaseSerializer = require('./BaseSerializer');
 
 function getTypeReaderFunction(reader, type) {
     let funcName = "read" + type;

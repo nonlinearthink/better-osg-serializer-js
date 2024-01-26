@@ -1,4 +1,5 @@
-let Group = require("./Group");
+const Group = require("./Group");
+
 class Geode extends Group{
     constructor(){
         super();

@@ -37,7 +37,7 @@ class Texture extends StateAttribute {
     setInternalFormat(internalFormat) {
         this.InternalFormatMode = InternalFormatMode.USE_USER_DEFINED_FORMAT;
         this.InternalFormat = internalFormat;
-        computeInternalFormatType();
+        this.computeInternalFormatType();
     }
 
 }

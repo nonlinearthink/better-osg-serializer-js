@@ -1,4 +1,5 @@
-let Node = require("./Node");
+const Node = require("./Node");
+
 class Group extends Node{
     constructor(){
         super();

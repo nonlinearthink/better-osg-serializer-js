@@ -1,4 +1,4 @@
-let StateAttribute = require('./StateAttribute');
+const StateAttribute = require('./StateAttribute');
 
 class Material extends StateAttribute {
     constructor() {

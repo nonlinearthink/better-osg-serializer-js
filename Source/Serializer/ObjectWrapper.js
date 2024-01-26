@@ -38,10 +38,7 @@ class ObjectWrapper {
                 try {
                     serializer.read(inputStream, obj)
                 } catch (e) {
-                    if(e.stack){
-                        e = e.toString()+"\n"+e.stack;
-                    }
-                    Log.fatal(e);
+                    Log.fatal(e.stack ? e : (e.toString()+"\n"+e.stack));
                     throw ( "ObjectWrapper.read: Error reading property " + this._name + "." + serializer.getName());
                 }
             }
@@ -49,7 +46,7 @@ class ObjectWrapper {
                 // version mismatch
             }
         });
-    };
+    }
 
     addSerializer(serializer) {
         assert(serializer);

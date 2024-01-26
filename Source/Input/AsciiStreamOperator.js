@@ -175,7 +175,7 @@ class AsciiStreamOperator extends StreamOperator {
     }
     readGLEnum(objectGLEnum) {
         let enumString = this.readString();
-        if (!objectGLEnum.hasOwnProperty(enumString))
+        if (!Object.prototype.hasOwnProperty.call(objectGLEnum, enumString))
             Log.warn("readGLEnum: " + enumString + " enum not found");
         objectGLEnum.value = GLEnum[enumString];
     }

@@ -2,7 +2,7 @@ const Log = require('../Common/Log');
 const BaseSerializer = require('./BaseSerializer');
 
 function reverseMap(map) {
-    ret = {};
+    const ret = {};
     Object.keys(map).forEach(key => {
         let val = map[key];
         if (ret[val])
@@ -26,7 +26,7 @@ class EnumSerializer extends BaseSerializer {
     read(inputStream, object) {
         if (inputStream.isBinary()) {
             let value = inputStream.inputOperator.readInt()
-            if (!this._reverseMap.hasOwnProperty(value)) {
+            if (!Object.prototype.hasOwnProperty.call(this._reverseMap, value)) {
                 Log.warn("EnumSerializer: failed to find ENUM value " + value + " for serializer " + this.getName() + ". Setting to default value.")
                 value = this._defaultValue;
             }
@@ -35,7 +35,7 @@ class EnumSerializer extends BaseSerializer {
         else if (inputStream.inputOperator.matchString(this.getName())) {
             let key = inputStream.inputOperator.readString();
             let value = this._enumMap[key];
-            if (!this._enumMap.hasOwnProperty(key)) {
+            if (!Object.prototype.hasOwnProperty.call(this._enumMap, key)) {
                 Log.warn("EnumSerializer: failed to find ENUM key " + key + " for serializer " + this.getName() + ". Setting to default value.")
                 value = this._defaultValue;
             }

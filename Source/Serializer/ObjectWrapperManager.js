@@ -12,7 +12,7 @@ const ObjectWrapperDictionary = {};
 
 function readWrapperObject(wrapperName) {
     return function (inputStream, obj) {
-        wrapperObject = ObjectWrapperDictionary[wrapperName];
+        const wrapperObject = ObjectWrapperDictionary[wrapperName];
         if (!wrapperObject) throw ("ObjectWrapperManager.readWrapperObject : " + wrapperName)
     }
 }

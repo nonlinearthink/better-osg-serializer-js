@@ -26,3 +26,5 @@ class Base64Encoder{
         return fullBuffer;
     }
 }
+
+module.exports = Base64Encoder;
