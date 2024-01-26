@@ -1,6 +1,6 @@
-# better-osg-serializer-js
+# browser-osg-serializer-js
 
-osg-serializier-js is PureJS module for serializing `.osgt` and `.osgb` files. 
+browser-osg-serializier-js is PureJS module for serializing `.osgt` and `.osgb` files.
 
 **The tool is still in development** but I will be happy to your issues and contributions
 
@@ -8,12 +8,24 @@ UPDATE: Consider using `wasm` using OpenSceneGraph's most updated code ([osg-was
 
 ## installation and usage
 
-In terminal: `npm install --save better-osg-serializer-js`
+In terminal: `npm install --save browser-osg-serializer-js`
 
-In code:
+for browser users:
 
 ```javascript
-const osg = require('osg-serializer-js');
+import osg from "browser-osg-serializer-js";
+
+const buffer = await fetch("http://127.0.0.1/MyAwesome3DModel.osgb").then(res=> res.arrayBuffer());
+const osgObj = osg.readBuffer(buffer, filePath);
+
+// start workin with 3d data
+
+```
+
+and still work for nodejs users:
+
+```javascript
+const osg = require('browser-osg-serializer-js');
 
 file = osg.readFile("MyAwesome3DModel.osgb");
 

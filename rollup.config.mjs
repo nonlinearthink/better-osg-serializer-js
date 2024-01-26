@@ -2,6 +2,9 @@ import pkg from "./package.json" assert { type: "json" };
 import { defineConfig } from "rollup";
 import commonjs from "@rollup/plugin-commonjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
+import json from "@rollup/plugin-json";
+import nodeGlobals from "rollup-plugin-node-globals";
+import builtins from "rollup-plugin-node-builtins";
 
 const external = [
   ...Object.keys(pkg.dependencies || {}),
@@ -30,7 +33,13 @@ export default defineConfig([
       chunkFileNames: "chunk-[name].js",
       sourcemap: true
     },
-    plugins: [commonjs(), nodeResolve({ browser: true })],
+    plugins: [
+      commonjs({ ignoreGlobal: true }),
+      json(),
+      nodeGlobals(),
+      builtins({ fs: true }),
+      nodeResolve({ browser: true })
+    ],
     external
   }
 ]);

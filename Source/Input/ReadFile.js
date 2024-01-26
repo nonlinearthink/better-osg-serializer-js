@@ -23,8 +23,11 @@ const WriteType = {
  * @param {buffer} buffer
  * @return {object} the serialized node
  */
-function readBuffer(buffer,path) {
-
+function readBuffer(buffer, path) {
+    // make ArrayBuffer compatible
+    if (buffer instanceof ArrayBuffer) {
+        buffer = Buffer.from(buffer);
+    }
     const low = buffer.readUInt32LE(0);
     const high = buffer.readUInt32LE(4);
     let reader, type, version, openscenegraph_soversion, hasDomainVersion;
